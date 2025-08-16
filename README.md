@@ -66,14 +66,14 @@ Edges = constraints (with uncertainty).
 
 Analogy: Blindfolded friends connected by ropes; optimization pulls them into positions that best fit all rope lengths.
 
-##Day 3
+## Day 3
 In mobile robotics, the robot needs to know:
 Where it is relative to the world.
 Where its sensors are located relative to the robot body.
 Where detected objects are relative to itself or to the environment.
 We express all of these using coordinate frames and transforms.
 
-###1. What is a Frame?
+### 1. What is a Frame?
 A frame is basically a coordinate system with an origin (0,0,0) and orientation (x, y, z axes).
 Example:
 map frame → global reference (fixed in the world).
@@ -98,7 +98,7 @@ Base_link (robot body)
   v
 Laser frame (LiDAR sensor)
 
-###2. What is a TF (Transform)?
+### 2. What is a TF (Transform)?
 A TF describes the spatial relationship between two frames:
 Translation → how far the origin of one frame is from another.
 Rotation → how one frame’s axes are oriented relative to another.
@@ -113,7 +113,7 @@ Translation: (0.2 m forward, 0.0 m sideways, 0.1 m up)
 Rotation: (0°, 0°, 90°)
 This means the LiDAR is 20 cm in front of the robot center, 10 cm above, rotated 90°.
 
-###3. TF in ROS (Robot Operating System)
+### 3. TF in ROS (Robot Operating System)
 In ROS, tf (or tf2) is a package that:
 Maintains a tree of coordinate frames over time.
 
@@ -132,13 +132,13 @@ map
 
 Each arrow has an associated time-varying transform.
 
-###4. Why Frames and TF are Important
+### 4. Why Frames and TF are Important
 Sensor fusion → Combine LiDAR, camera, IMU data in a common frame.
 Navigation → Convert a goal in map frame to wheel commands in base_link frame.
 Localization → Match sensor data in its own frame to a map in the global frame.
 Manipulation → Know where the robot’s arm/gripper is relative to an object.
 
-###5. Key Practical Notes
+### 5. Key Practical Notes
 Static transforms → Fixed relationships (e.g., base_link → laser).
 Dynamic transforms → Change over time (e.g., odom → base_link as robot moves).
 Accuracy matters → Bad TF calibration means sensors don’t align and maps become wrong.
