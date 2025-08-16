@@ -143,3 +143,20 @@ Static transforms → Fixed relationships (e.g., base_link → laser).
 Dynamic transforms → Change over time (e.g., odom → base_link as robot moves).
 Accuracy matters → Bad TF calibration means sensors don’t align and maps become wrong.
 Time stamping → TF in ROS is time-aware so transforms correspond to exact sensor timestamps.
+
+## Day 4
+### TurtleBot3 SLAM Demo: Commands & Workflow
+<!-- Launch TurtleBot3 simulation -->
+ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
+
+<!-- Launch SLAM Toolbox (sync mode) -->
+ros2 launch slam_toolbox online_sync_launch.py
+
+<!-- Teleop to build map -->
+ros2 run turtlebot3_teleop teleop_keyboard
+
+<!-- Save map -->
+ros2 run nav2_map_server map_saver_cli -f ~/slam_month1/my_map
+
+<!-- View map image -->
+xdg-open ~/slam_month1/my_map.pgm
