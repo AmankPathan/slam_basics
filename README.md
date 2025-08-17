@@ -146,17 +146,17 @@ Time stamping → TF in ROS is time-aware so transforms correspond to exact sens
 
 ## Day 4
 ### TurtleBot3 SLAM Demo: Commands & Workflow
-<!-- Launch TurtleBot3 simulation -->
+> Launch TurtleBot3 simulation
 ros2 launch turtlebot3_gazebo turtlebot3_world.launch.py
 
-<!-- Launch SLAM Toolbox (sync mode) -->
+> Launch SLAM Toolbox (sync mode)
 ros2 launch slam_toolbox online_sync_launch.py
 
-<!-- Teleop to build map -->
+> Teleop to build map
 ros2 run turtlebot3_teleop teleop_keyboard
 
-<!-- Save map -->
+> Save map
 ros2 run nav2_map_server map_saver_cli -f ~/slam_month1/my_map
 
-<!-- View map image -->
+> View map image
 xdg-open ~/slam_month1/my_map.pgm
